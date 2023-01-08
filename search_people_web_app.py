@@ -5,6 +5,16 @@ from requests import session
 ses = session()
 import numpy as np
 
+st.set_page_config(page_title= 'searchpeoplefree.com scraper', page_icon=":smile:")
+hide_menu = """
+<style>
+#MainMenu {
+    visibility:hidden;}
+footer {
+    visibility:hidden;}
+</style>
+"""
+st.markdown(hide_menu, unsafe_allow_html=True)
 
 def format_text(text):
     text = text.lower()
@@ -100,7 +110,6 @@ api = st.text_input('Your scrapingdog api key', placeholder='621b03gths82760235d
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
-    df = df.head(10)
     fn = df['First Name'].to_list()
     ln = df['Last Name'].to_list()
     mn = df['Middle Name'].to_list()
