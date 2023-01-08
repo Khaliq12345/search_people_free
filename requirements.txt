@@ -4,3 +4,4 @@ streamlit==1.15.0
 requests==2.23.0
 lxml==4.9.1
 streamlit
+numpy
