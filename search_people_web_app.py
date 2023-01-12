@@ -52,7 +52,7 @@ def scraper():
         cards = soup.select('li.toc.l-i.mb-5') # Only save the box with 'MD'
         new_card = []
         for card in cards:
-            if 'MD' in card.select_one('.h2').text:
+            if f'{keyword}' in card.select_one('.h2').text:
                 new_card.append(card)
             else:
                 pass
@@ -107,6 +107,7 @@ st.title('SEARCHPEOPLE FREE SCRAPER')
 st.caption('This web app will compare names scraped from legacy.com with searchpeoplefree.com')
 st.caption('Upload file that was scraped directly from the legacy.com, any modification to the csv file can cause an error in this web app')
 api = st.text_input('Your scrapingdog api key', placeholder='621b03gths82760235d2259d0')
+keyword = st.text_input('The state', placeholder= 'MD')
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
@@ -115,8 +116,8 @@ if uploaded_file is not None:
     mn = df['Middle Name'].to_list()
     cities = df['City'].to_list()
     states = df['State'].to_list()
-    cities = ["MD" if x is np.nan else x for x in cities]
-    states = ["MD" if x is np.nan else x for x in states]
+    city = [df['State'].max() if x is np.nan else x for x in cities]
+    state = [df['State'].max() if x is np.nan else x for x in states]
 
 button = st.button('Scrape!')
 
