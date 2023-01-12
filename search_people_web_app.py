@@ -20,7 +20,7 @@ def format_text(text):
     try:
         text = text.lower()
     except:
-        print(text)
+        st.text(text)
 
     # Replace spaces with hyphens
     text = text.replace(" ", "-")
