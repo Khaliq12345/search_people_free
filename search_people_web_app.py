@@ -117,8 +117,8 @@ if uploaded_file is not None:
     mn = df['Middle Name'].to_list()
     cities = df['City'].to_list()
     states = df['State'].to_list()
-    city = [x = df['State'].value_counts().idxmax() if x is np.nan else x for x in cities]
-    state = [x = df['State'].value_counts().idxmax() if x is np.nan else x for x in states]
+    city = [df['State'].value_counts().idxmax() if x is np.nan else x for x in cities]
+    state = [df['State'].value_counts().idxmax() if x is np.nan else x for x in states]
 
 button = st.button('Scrape!')
 
