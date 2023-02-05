@@ -23,10 +23,16 @@ def format_text(text):
         text = text
 
     # Replace spaces with hyphens
-    text = text.replace(" ", "-")
+    try:
+        text = text.replace(" ", "-")
+    except:
+        text = text
 
     # Remove dots
-    text = text.replace(".", "")
+    try:
+        text = text.replace(".", "")
+    except:
+        text = text
 
     return text
 
