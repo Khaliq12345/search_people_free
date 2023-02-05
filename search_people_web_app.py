@@ -17,7 +17,10 @@ footer {
 st.markdown(hide_menu, unsafe_allow_html=True)
 
 def format_text(text):
-    text = text.lower()
+    try:
+        text = text.lower()
+    except:
+        text = text
 
     # Replace spaces with hyphens
     text = text.replace(" ", "-")
